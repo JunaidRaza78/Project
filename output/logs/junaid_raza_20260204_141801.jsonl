@@ -1,0 +1,20 @@
+{"timestamp": "2026-02-04T14:18:01.631364", "event_type": "session_start", "data": {"target": "Junaid Raza", "timestamp": "2026-02-04T14:18:01.631362"}}
+{"timestamp": "2026-02-04T14:18:01.632538", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:18:02.684070", "event_type": "search", "data": {"query": "Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:18:03.396663", "event_type": "search", "data": {"query": "Junaid Raza biography background", "num_results": 9, "iteration": 0}}
+{"timestamp": "2026-02-04T14:18:04.214243", "event_type": "search", "data": {"query": "Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:18:04.217658", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:18:06.080272", "event_type": "finding", "data": {"category": "biography", "fact": "Junaid Raza was born on 23 October 2003", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:18:06.081631", "event_type": "finding", "data": {"category": "biography", "fact": "Junaid Raza is from Pakistan", "confidence": 1.0}}
+{"timestamp": "2026-02-04T14:18:06.082110", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a Full Stack Developer", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:18:06.082569", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is the CEO and Founder of Koding Web Ltd", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:18:06.082987", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza has experience in film production, media management, and advertising", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:18:06.083427", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a Machine Learning Expert, Data Scientist, and AI Engineer", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:18:06.083847", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a growth and retention architect", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.084249", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a copywriter and content marketer with over 5 years of experience", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.084693", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a B2B SEO Expert, Copywriter, and Content Strategist", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.085041", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a member of the Pakistan-U.S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.085383", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a volunteer photographer/videographer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.085739", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a part of the Original Bible Foundation team, in charge of technology and social media", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:18:06.086090", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:18:06.087763", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}

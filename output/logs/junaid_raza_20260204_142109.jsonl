@@ -1,0 +1,37 @@
+{"timestamp": "2026-02-04T14:21:09.644329", "event_type": "session_start", "data": {"target": "Junaid Raza", "timestamp": "2026-02-04T14:21:09.644327"}}
+{"timestamp": "2026-02-04T14:21:09.646310", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:21:10.604932", "event_type": "search", "data": {"query": "Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:21:12.222245", "event_type": "search", "data": {"query": "Junaid Raza biography background", "num_results": 9, "iteration": 0}}
+{"timestamp": "2026-02-04T14:21:13.038166", "event_type": "search", "data": {"query": "Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:21:13.040716", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:21:15.038979", "event_type": "finding", "data": {"category": "biography", "fact": "Originally from Pakistan", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.039992", "event_type": "finding", "data": {"category": "biography", "fact": "Completed Bachelor's degree in software engineering", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.040566", "event_type": "finding", "data": {"category": "biography", "fact": "Completed Matric in Science with a first division", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.040935", "event_type": "finding", "data": {"category": "biography", "fact": "Holds a Master's degree in Health Technology", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.041175", "event_type": "finding", "data": {"category": "biography", "fact": "15-year-old Hafiz-e-Quran", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.041383", "event_type": "finding", "data": {"category": "biography", "fact": "Born and raised in Lahore, Pakistan", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.041578", "event_type": "finding", "data": {"category": "biography", "fact": "Graduated magna cum laude from Palmer College of Chiropractic", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.041792", "event_type": "finding", "data": {"category": "biography", "fact": "Holds a kinesiology degree from the University of Calgary", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.042001", "event_type": "finding", "data": {"category": "professional", "fact": "Experienced Media Professional with a Master in Film Production", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:21:15.042241", "event_type": "finding", "data": {"category": "professional", "fact": "Over 10 years of experience in the media industry", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:21:15.042446", "event_type": "finding", "data": {"category": "professional", "fact": "Full Stack Developer and CEO of Koding Web Ltd", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:21:15.042644", "event_type": "finding", "data": {"category": "professional", "fact": "Senior Machine Learning Engineer", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:21:15.042828", "event_type": "finding", "data": {"category": "professional", "fact": "Contribution to advanced AI initiatives, including designing Retrieval-Augmented Generation (RAG) pipelines", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:21:15.043053", "event_type": "finding", "data": {"category": "professional", "fact": "Service Desk Engineer at Veris", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.043232", "event_type": "finding", "data": {"category": "professional", "fact": "IT Technician (Ad) at G1 Asset Management", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.043435", "event_type": "finding", "data": {"category": "professional", "fact": "Digital Marketing Trainer with over 10 years of experience", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.043642", "event_type": "finding", "data": {"category": "professional", "fact": "Expertise in PPC, SEO, SMO, ORM, Affiliate Marketing, Email Marketing, YouTube Marketing, Facebook Marketing", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.043862", "event_type": "finding", "data": {"category": "associations", "fact": "Former Executive Board Member at Pakistan-U. S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.044112", "event_type": "finding", "data": {"category": "associations", "fact": "Former volunteer photographer/videographer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.044330", "event_type": "finding", "data": {"category": "associations", "fact": "Founder of @yestoserve.foundation", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.044518", "event_type": "finding", "data": {"category": "associations", "fact": "Brand Owner of @zarri.dhaaga", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.044695", "event_type": "finding", "data": {"category": "associations", "fact": "Keynote speaker at Thrive Global", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:21:15.044999", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:21:15.045980", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}
+{"timestamp": "2026-02-04T14:21:16.460357", "event_type": "risk", "data": {"category": "pattern", "description": "Inconsistent and overlapping professional histories", "severity": 6}}
+{"timestamp": "2026-02-04T14:21:16.461106", "event_type": "risk", "data": {"category": "association", "description": "Unclear connections to various organizations", "severity": 4}}
+{"timestamp": "2026-02-04T14:21:16.461646", "event_type": "risk", "data": {"category": "reputation", "description": "Potential overstatement of qualifications and expertise", "severity": 5}}
+{"timestamp": "2026-02-04T14:21:16.462973", "event_type": "phase_change", "data": {"from": "risk_analysis", "to": "connection_mapping"}}
+{"timestamp": "2026-02-04T14:21:18.163926", "event_type": "phase_change", "data": {"from": "connection_mapping", "to": "source_validation"}}
+{"timestamp": "2026-02-04T14:22:48.829883", "event_type": "phase_change", "data": {"from": "source_validation", "to": "report_generation"}}
+{"timestamp": "2026-02-04T14:22:48.835026", "event_type": "error", "data": {"error": "'AddableValuesDict' object has no attribute 'target_name'", "context": "investigation"}}

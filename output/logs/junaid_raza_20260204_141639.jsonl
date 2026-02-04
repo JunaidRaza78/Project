@@ -1,0 +1,23 @@
+{"timestamp": "2026-02-04T14:16:39.788941", "event_type": "session_start", "data": {"target": "Junaid Raza", "timestamp": "2026-02-04T14:16:39.788939"}}
+{"timestamp": "2026-02-04T14:16:39.790604", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:16:40.893803", "event_type": "search", "data": {"query": "Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:16:41.566707", "event_type": "search", "data": {"query": "Junaid Raza biography background", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:16:42.555397", "event_type": "search", "data": {"query": "Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:16:42.559465", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:16:44.591556", "event_type": "finding", "data": {"category": "biography", "fact": "Originally from Pakistan", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:16:44.592552", "event_type": "finding", "data": {"category": "biography", "fact": "Completed bachelor's degree in software engineering", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.593240", "event_type": "finding", "data": {"category": "professional", "fact": "Experienced Media Professional with a Master's degree", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:16:44.593629", "event_type": "finding", "data": {"category": "professional", "fact": "Worked as a mobile application engineer for 3 years", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.593856", "event_type": "finding", "data": {"category": "professional", "fact": "Full Stack Developer and CEO and Founder of Koding Web Ltd", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:16:44.594061", "event_type": "finding", "data": {"category": "professional", "fact": "Growth and retention architect specializing in high-ticket ecosystem", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.594251", "event_type": "finding", "data": {"category": "professional", "fact": "Former Executive Board Member at Pakistan-U. S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.594435", "event_type": "finding", "data": {"category": "professional", "fact": "Former volunteer photographer/videographer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.594618", "event_type": "finding", "data": {"category": "professional", "fact": "B2B SEO Expert, Copywriter, Content Strategist", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.594788", "event_type": "finding", "data": {"category": "professional", "fact": "Social Activist Corps Member at TFALosAngeles", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.594955", "event_type": "finding", "data": {"category": "professional", "fact": "Founder of YesToServe.foundation and Brand Owner at ZarriDhaaga", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.595133", "event_type": "finding", "data": {"category": "financial", "fact": "Founder and CEO of Koding Web Ltd", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:16:44.595290", "event_type": "finding", "data": {"category": "associations", "fact": "Member of Pakistan-U. S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.595454", "event_type": "finding", "data": {"category": "associations", "fact": "Volunteer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.595610", "event_type": "finding", "data": {"category": "associations", "fact": "Representative of Muslims, Youth, and Far East at Original Bible Foundation", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:16:44.595794", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:16:44.596964", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}

@@ -1,0 +1,19 @@
+{"timestamp": "2026-02-04T14:12:47.335525", "event_type": "session_start", "data": {"target": "Junaid Raza", "timestamp": "2026-02-04T14:12:47.335523"}}
+{"timestamp": "2026-02-04T14:12:47.336705", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:12:48.313493", "event_type": "search", "data": {"query": "Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:12:49.095366", "event_type": "search", "data": {"query": "Junaid Raza biography background", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:12:49.953820", "event_type": "search", "data": {"query": "Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:12:49.959013", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:12:51.768263", "event_type": "finding", "data": {"category": "biography", "fact": "Originally from Pakistan", "confidence": 0.4}}
+{"timestamp": "2026-02-04T14:12:51.769311", "event_type": "finding", "data": {"category": "biography", "fact": "Born on 23 October 2003", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:12:51.769689", "event_type": "finding", "data": {"category": "professional", "fact": "Experienced Media Professional with a Master's degree", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:12:51.770045", "event_type": "finding", "data": {"category": "professional", "fact": "Full Stack Developer and CEO of Koding Web Ltd", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:12:51.770356", "event_type": "finding", "data": {"category": "professional", "fact": "Gcms Expert at Beijing Technology and Business University", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.770681", "event_type": "finding", "data": {"category": "professional", "fact": "Practicing chiropractor since 2001", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.770958", "event_type": "finding", "data": {"category": "professional", "fact": "Copywriter and content marketer with over 5 years of experience", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.771250", "event_type": "finding", "data": {"category": "professional", "fact": "Founder of Yes To Serve Foundation and Zarri Dhaaga", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.771516", "event_type": "finding", "data": {"category": "associations", "fact": "Former Executive Board Member at Pakistan-U.S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.771806", "event_type": "finding", "data": {"category": "associations", "fact": "Volunteer photographer/videographer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.772077", "event_type": "finding", "data": {"category": "associations", "fact": "Representative of Muslims, Youth, and Far East at Original Bible Foundation", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:12:51.772362", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:12:51.773804", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}

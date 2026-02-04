@@ -1,0 +1,20 @@
+{"timestamp": "2026-02-04T14:33:51.597745", "event_type": "session_start", "data": {"target": "Pirzada Junaid Raza", "timestamp": "2026-02-04T14:33:51.597743"}}
+{"timestamp": "2026-02-04T14:33:51.599240", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:33:52.553656", "event_type": "search", "data": {"query": "Pirzada Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:33:53.789862", "event_type": "search", "data": {"query": "Pirzada Junaid Raza biography background", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:33:54.687610", "event_type": "search", "data": {"query": "Pirzada Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:33:54.690892", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:33:55.596465", "event_type": "finding", "data": {"category": "biography", "fact": "Pirzada Junaid Raza graduated from University Of Central Punjab in 2022", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:33:55.597861", "event_type": "finding", "data": {"category": "biography", "fact": "Pirzada Junaid Raza attended Punjab Group High School Chishtian from March 2013 to April 2015", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:33:55.598427", "event_type": "finding", "data": {"category": "biography", "fact": "Pirzada Junaid Raza is a Muhajir person", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:33:55.598892", "event_type": "finding", "data": {"category": "professional", "fact": "Pirzada Junaid Raza is a growth and retention architect", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:33:55.599355", "event_type": "finding", "data": {"category": "professional", "fact": "Pirzada Junaid Raza helps businesses solve the two most expensive problems in the high-ticket ecosystem", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:33:55.599786", "event_type": "finding", "data": {"category": "professional", "fact": "Pirzada Junaid Raza is the Co-Founder/Director of an unknown company", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:33:55.600179", "event_type": "finding", "data": {"category": "associations", "fact": "Pirzada Junaid Raza is associated with Nazamia welfare trust", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:33:55.600572", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:33:55.602095", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}
+{"timestamp": "2026-02-04T14:33:56.420280", "event_type": "risk", "data": {"category": "association", "description": "Association with unknown or potentially problematic entities", "severity": 4}}
+{"timestamp": "2026-02-04T14:33:56.421331", "event_type": "risk", "data": {"category": "pattern", "description": "Inconsistencies in professional claims", "severity": 3}}
+{"timestamp": "2026-02-04T14:33:56.422798", "event_type": "phase_change", "data": {"from": "risk_analysis", "to": "connection_mapping"}}
+{"timestamp": "2026-02-04T14:33:57.795502", "event_type": "phase_change", "data": {"from": "connection_mapping", "to": "source_validation"}}
+{"timestamp": "2026-02-04T14:34:01.758372", "event_type": "phase_change", "data": {"from": "source_validation", "to": "report_generation"}}

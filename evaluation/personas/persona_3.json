@@ -1,0 +1,138 @@
+{
+    "name": "Adam Neumann",
+    "description": "Co-founder of WeWork, removed as CEO after failed IPO",
+    "context": "WeWork co-founder, real estate startup",
+    "expected_findings": {
+        "biography": [
+            {
+                "fact": "Born in Israel",
+                "required": true
+            },
+            {
+                "fact": "Served in Israeli Navy",
+                "required": false
+            },
+            {
+                "fact": "Attended Baruch College in New York",
+                "required": true
+            },
+            {
+                "fact": "Did not complete degree at Baruch",
+                "required": false
+            }
+        ],
+        "professional": [
+            {
+                "fact": "Co-founded WeWork in 2010",
+                "required": true
+            },
+            {
+                "fact": "Served as CEO of WeWork",
+                "required": true
+            },
+            {
+                "fact": "Removed as CEO in 2019",
+                "required": true
+            },
+            {
+                "fact": "Miguel McKelvey was co-founder",
+                "required": true
+            }
+        ],
+        "financial": [
+            {
+                "fact": "WeWork valued at $47 billion at peak",
+                "required": true
+            },
+            {
+                "fact": "Received $1.7 billion exit package from SoftBank",
+                "required": true
+            },
+            {
+                "fact": "WeWork valuation dropped to $8 billion after IPO failure",
+                "required": false
+            }
+        ],
+        "associations": [
+            {
+                "fact": "Masayoshi Son of SoftBank was major investor",
+                "required": true
+            },
+            {
+                "fact": "Rebekah Neumann (wife) was Chief Brand Officer",
+                "required": true
+            },
+            {
+                "fact": "Miguel McKelvey was co-founder",
+                "required": true
+            }
+        ],
+        "controversies": [
+            {
+                "fact": "Failed IPO in 2019",
+                "required": true
+            },
+            {
+                "fact": "Sold trademark 'We' to WeWork for $5.9 million",
+                "required": false
+            },
+            {
+                "fact": "Corporate governance issues cited",
+                "required": true
+            },
+            {
+                "fact": "Self-dealing allegations",
+                "required": false
+            }
+        ]
+    },
+    "expected_risks": [
+        {
+            "category": "financial",
+            "description": "Self-dealing through trademark sales to own company",
+            "min_severity": 7
+        },
+        {
+            "category": "legal",
+            "description": "Corporate governance violations",
+            "min_severity": 6
+        },
+        {
+            "category": "reputation",
+            "description": "Failed IPO and massive valuation collapse",
+            "min_severity": 7
+        }
+    ],
+    "expected_connections": [
+        {
+            "entity": "WeWork",
+            "type": "organization",
+            "relationship": "co-founded"
+        },
+        {
+            "entity": "Masayoshi Son",
+            "type": "person",
+            "relationship": "investor"
+        },
+        {
+            "entity": "SoftBank",
+            "type": "organization",
+            "relationship": "investor"
+        },
+        {
+            "entity": "Rebekah Neumann",
+            "type": "person",
+            "relationship": "spouse/colleague"
+        },
+        {
+            "entity": "Miguel McKelvey",
+            "type": "person",
+            "relationship": "co-founder"
+        }
+    ],
+    "minimum_scores": {
+        "finding_coverage": 0.8,
+        "risk_coverage": 0.6,
+        "connection_coverage": 0.6
+    }
+}

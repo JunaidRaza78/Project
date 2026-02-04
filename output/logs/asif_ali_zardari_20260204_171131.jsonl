@@ -1,0 +1,27 @@
+{"timestamp": "2026-02-04T17:11:31.634054", "event_type": "session_start", "data": {"target": "Asif Ali Zardari", "timestamp": "2026-02-04T17:11:31.634052"}}
+{"timestamp": "2026-02-04T17:11:31.635012", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T17:11:32.891297", "event_type": "search", "data": {"query": "Asif Ali Zardari", "num_results": 11, "iteration": 0}}
+{"timestamp": "2026-02-04T17:11:34.025393", "event_type": "search", "data": {"query": "Asif Ali Zardari biography background", "num_results": 9, "iteration": 0}}
+{"timestamp": "2026-02-04T17:11:34.745770", "event_type": "search", "data": {"query": "Asif Ali Zardari career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T17:11:34.749437", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T17:11:36.383689", "event_type": "finding", "data": {"category": "biography", "fact": "Born on July 26, 1955", "confidence": 0.7}}
+{"timestamp": "2026-02-04T17:11:36.389258", "event_type": "finding", "data": {"category": "biography", "fact": "Born in Karachi, Pakistan", "confidence": 0.7}}
+{"timestamp": "2026-02-04T17:11:36.389562", "event_type": "finding", "data": {"category": "biography", "fact": "Born to a Baloch family from Sindh province", "confidence": 0.4}}
+{"timestamp": "2026-02-04T17:11:36.390869", "event_type": "finding", "data": {"category": "biography", "fact": "Received early education at Karachi Grammar School", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.391087", "event_type": "finding", "data": {"category": "biography", "fact": "Attended St. Patrick's High School", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.391283", "event_type": "finding", "data": {"category": "biography", "fact": "Studied at the London School of Economics", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.391593", "event_type": "finding", "data": {"category": "biography", "fact": "Married to Benazir Bhutto", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.391763", "event_type": "finding", "data": {"category": "professional", "fact": "Served as President of Pakistan from 2008 to 2013", "confidence": 0.7}}
+{"timestamp": "2026-02-04T17:11:36.391956", "event_type": "finding", "data": {"category": "professional", "fact": "Served as President of Pakistan from 2024 onwards", "confidence": 0.6}}
+{"timestamp": "2026-02-04T17:11:36.399239", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Member of the National Assembly from 1990-1993 and 1993-1996", "confidence": 0.7}}
+{"timestamp": "2026-02-04T17:11:36.400054", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister, Environment from 1993-1996", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.400564", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister, Investment from 1995-1996", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.400772", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister, Investment from 1997-1999", "confidence": 0.3}}
+{"timestamp": "2026-02-04T17:11:36.401068", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T17:11:36.402063", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}
+{"timestamp": "2026-02-04T17:11:37.910022", "event_type": "risk", "data": {"category": "reputation", "description": "Controversial political career with multiple terms and positions, potentially indicating instability or inconsistency", "severity": 6}}
+{"timestamp": "2026-02-04T17:11:37.911949", "event_type": "risk", "data": {"category": "association", "description": "Connection to Benazir Bhutto, which may imply potential risks due to her own controversial political career and assassination", "severity": 5}}
+{"timestamp": "2026-02-04T17:11:37.912985", "event_type": "risk", "data": {"category": "pattern", "description": "Inconsistent confidence levels in biographical information, potentially indicating uncertainty or discrepancies in his personal history", "severity": 4}}
+{"timestamp": "2026-02-04T17:11:37.915060", "event_type": "phase_change", "data": {"from": "risk_analysis", "to": "connection_mapping"}}
+{"timestamp": "2026-02-04T17:11:39.795231", "event_type": "phase_change", "data": {"from": "connection_mapping", "to": "source_validation"}}
+{"timestamp": "2026-02-04T17:13:02.176387", "event_type": "phase_change", "data": {"from": "source_validation", "to": "report_generation"}}

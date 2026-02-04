@@ -1,0 +1,138 @@
+{
+    "name": "Sam Bankman-Fried",
+    "description": "Founder of FTX and Alameda Research, convicted of fraud",
+    "context": "FTX cryptocurrency exchange founder",
+    "expected_findings": {
+        "biography": [
+            {
+                "fact": "Born March 6, 1992",
+                "required": true
+            },
+            {
+                "fact": "Graduated from MIT in 2014",
+                "required": true
+            },
+            {
+                "fact": "Studied physics at MIT",
+                "required": false
+            },
+            {
+                "fact": "Parents are Stanford law professors",
+                "required": true
+            }
+        ],
+        "professional": [
+            {
+                "fact": "Worked at Jane Street Capital",
+                "required": true
+            },
+            {
+                "fact": "Founded Alameda Research in 2017",
+                "required": true
+            },
+            {
+                "fact": "Founded FTX in 2019",
+                "required": true
+            },
+            {
+                "fact": "FTX filed for bankruptcy in November 2022",
+                "required": true
+            }
+        ],
+        "financial": [
+            {
+                "fact": "FTX valued at $32 billion at peak",
+                "required": true
+            },
+            {
+                "fact": "Approximately $8 billion in customer funds missing",
+                "required": true
+            },
+            {
+                "fact": "Personal net worth reached over $20 billion",
+                "required": false
+            }
+        ],
+        "associations": [
+            {
+                "fact": "Caroline Ellison was CEO of Alameda Research",
+                "required": true
+            },
+            {
+                "fact": "Gary Wang was co-founder and CTO of FTX",
+                "required": true
+            },
+            {
+                "fact": "Nishad Singh was Director of Engineering at FTX",
+                "required": false
+            }
+        ],
+        "controversies": [
+            {
+                "fact": "Convicted of fraud in November 2023",
+                "required": true
+            },
+            {
+                "fact": "Sentenced to 25 years in prison",
+                "required": true
+            },
+            {
+                "fact": "Political donations over $40 million",
+                "required": false
+            },
+            {
+                "fact": "Misappropriation of customer funds",
+                "required": true
+            }
+        ]
+    },
+    "expected_risks": [
+        {
+            "category": "legal",
+            "description": "Fraud conviction with 25-year sentence",
+            "min_severity": 10
+        },
+        {
+            "category": "financial",
+            "description": "Misappropriation of $8+ billion in customer funds",
+            "min_severity": 10
+        },
+        {
+            "category": "legal",
+            "description": "Campaign finance violations",
+            "min_severity": 7
+        }
+    ],
+    "expected_connections": [
+        {
+            "entity": "FTX",
+            "type": "organization",
+            "relationship": "founded"
+        },
+        {
+            "entity": "Alameda Research",
+            "type": "organization",
+            "relationship": "founded"
+        },
+        {
+            "entity": "Caroline Ellison",
+            "type": "person",
+            "relationship": "business partner"
+        },
+        {
+            "entity": "Gary Wang",
+            "type": "person",
+            "relationship": "co-founder"
+        },
+        {
+            "entity": "Jane Street Capital",
+            "type": "organization",
+            "relationship": "former employer"
+        }
+    ],
+    "minimum_scores": {
+        "finding_coverage": 0.8,
+        "risk_coverage": 0.75,
+        "connection_coverage": 0.6
+    }
+}

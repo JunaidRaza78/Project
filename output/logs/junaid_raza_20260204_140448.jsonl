@@ -1,0 +1,27 @@
+{"timestamp": "2026-02-04T14:04:48.834424", "event_type": "session_start", "data": {"target": "Junaid Raza", "timestamp": "2026-02-04T14:04:48.834422"}}
+{"timestamp": "2026-02-04T14:04:48.836057", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:04:49.741255", "event_type": "search", "data": {"query": "Junaid Raza", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:04:50.831380", "event_type": "search", "data": {"query": "Junaid Raza biography background", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:04:52.439058", "event_type": "search", "data": {"query": "Junaid Raza career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:04:52.447699", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:04:54.713755", "event_type": "finding", "data": {"category": "biography", "fact": "Junaid Raza was born on October 23, 2003", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:04:54.714755", "event_type": "finding", "data": {"category": "biography", "fact": "Junaid Raza is from Pakistan", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:04:54.715031", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a Full Stack Developer and CEO of Koding Web Ltd", "confidence": 0.95}}
+{"timestamp": "2026-02-04T14:04:54.715282", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza has over 10 years of experience in the media industry", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:04:54.715500", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a growth and retention architect", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.715775", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a copywriter and content marketer with over 5 years of experience", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.716065", "event_type": "finding", "data": {"category": "professional", "fact": "Junaid Raza is a B2B SEO Expert, Copywriter, and Content Strategist", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.716301", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a member of the Pakistan-U.S. Alumni Network", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.716497", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a volunteer photographer/videographer at WIU Multicultural Center", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.716698", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is a Social Activist Corps Member at The Future Leaders of America", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.716891", "event_type": "finding", "data": {"category": "associations", "fact": "Junaid Raza is the founder of Yes To Serve Foundation", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.717064", "event_type": "finding", "data": {"category": "education", "fact": "Junaid Raza has a Master's degree in Health Technology from the University of Turku", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.717262", "event_type": "finding", "data": {"category": "education", "fact": "Junaid Raza has a BS in Information Technology from Benazir Bhutto Shaheed University Lyari", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.717449", "event_type": "finding", "data": {"category": "education", "fact": "Junaid Raza has a degree in Software Engineering", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:04:54.717615", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:04:54.719336", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}
+{"timestamp": "2026-02-04T14:06:02.056368", "event_type": "risk", "data": {"category": "pattern", "description": "Inconsistencies in claims of profession and education", "severity": 6}}
+{"timestamp": "2026-02-04T14:06:02.059377", "event_type": "risk", "data": {"category": "association", "description": "Potential connection to unknown or unverified organizations", "severity": 4}}
+{"timestamp": "2026-02-04T14:06:02.059924", "event_type": "risk", "data": {"category": "reputation", "description": "Potential discrepancy in publicly available information", "severity": 5}}
+{"timestamp": "2026-02-04T14:06:02.062219", "event_type": "phase_change", "data": {"from": "risk_analysis", "to": "connection_mapping"}}
+{"timestamp": "2026-02-04T14:06:04.041010", "event_type": "phase_change", "data": {"from": "connection_mapping", "to": "source_validation"}}

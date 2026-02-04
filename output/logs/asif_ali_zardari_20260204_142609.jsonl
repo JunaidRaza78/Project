@@ -1,0 +1,34 @@
+{"timestamp": "2026-02-04T14:26:09.171905", "event_type": "session_start", "data": {"target": "Asif Ali Zardari", "timestamp": "2026-02-04T14:26:09.171903"}}
+{"timestamp": "2026-02-04T14:26:09.173241", "event_type": "phase_change", "data": {"from": "start", "to": "initial_search"}}
+{"timestamp": "2026-02-04T14:26:10.337865", "event_type": "search", "data": {"query": "Asif Ali Zardari", "num_results": 11, "iteration": 0}}
+{"timestamp": "2026-02-04T14:26:11.174308", "event_type": "search", "data": {"query": "Asif Ali Zardari biography background", "num_results": 9, "iteration": 0}}
+{"timestamp": "2026-02-04T14:26:11.947708", "event_type": "search", "data": {"query": "Asif Ali Zardari career professional history", "num_results": 10, "iteration": 0}}
+{"timestamp": "2026-02-04T14:26:11.956596", "event_type": "phase_change", "data": {"from": "initial_search", "to": "fact_extraction"}}
+{"timestamp": "2026-02-04T14:26:14.115856", "event_type": "finding", "data": {"category": "biography", "fact": "Born on July 26, 1955", "confidence": 0.7}}
+{"timestamp": "2026-02-04T14:26:14.116984", "event_type": "finding", "data": {"category": "biography", "fact": "Born in Karachi, Pakistan", "confidence": 0.7}}
+{"timestamp": "2026-02-04T14:26:14.117358", "event_type": "finding", "data": {"category": "biography", "fact": "Belongs to a Baloch family from Sindh province", "confidence": 0.4}}
+{"timestamp": "2026-02-04T14:26:14.117747", "event_type": "finding", "data": {"category": "biography", "fact": "Received early education at Karachi Grammar School", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.118114", "event_type": "finding", "data": {"category": "biography", "fact": "Attended St. Patrick's High School", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.118429", "event_type": "finding", "data": {"category": "biography", "fact": "Studied at the London School of Economics", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.118734", "event_type": "finding", "data": {"category": "biography", "fact": "Born to Hakim Ali Zardari, head of a Sindhi tribe", "confidence": 0.85}}
+{"timestamp": "2026-02-04T14:26:14.119048", "event_type": "finding", "data": {"category": "biography", "fact": "Born on July 26, 1956 (contradictory to July 26, 1955)", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:26:14.119422", "event_type": "finding", "data": {"category": "biography", "fact": "Born in Karachi, Sindh province, Pakistan (contradictory to July 26, 1955)", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:26:14.119794", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Member of the National Assembly from 1990-1993 and 1993-1996", "confidence": 0.4}}
+{"timestamp": "2026-02-04T14:26:14.120194", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister, Environment from 1993-1996", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.120526", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister, Investment from 1995-1996", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.120858", "event_type": "finding", "data": {"category": "professional", "fact": "Served as Federal Minister from 1997-1999", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.121168", "event_type": "finding", "data": {"category": "professional", "fact": "Served as 11th President of Pakistan from 2008-2013", "confidence": 0.7}}
+{"timestamp": "2026-02-04T14:26:14.121499", "event_type": "finding", "data": {"category": "professional", "fact": "Served as executive president from 2008-2013", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:26:14.121809", "event_type": "finding", "data": {"category": "professional", "fact": "Served as President of Pakistan from 2024- (contradictory to 2013)", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:26:14.122157", "event_type": "finding", "data": {"category": "associations", "fact": "Member of the Pakistan People's Party", "confidence": 0.6}}
+{"timestamp": "2026-02-04T14:26:14.122439", "event_type": "finding", "data": {"category": "associations", "fact": "Has friends in most political parties", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.122983", "event_type": "finding", "data": {"category": "controversies", "fact": "Faced many corruption cases in the past", "confidence": 0.3}}
+{"timestamp": "2026-02-04T14:26:14.123479", "event_type": "model_call", "data": {"model_type": "groq", "task": "fact_extraction", "latency_ms": 0, "tokens": 0}}
+{"timestamp": "2026-02-04T14:26:14.124742", "event_type": "phase_change", "data": {"from": "fact_extraction", "to": "risk_analysis"}}
+{"timestamp": "2026-02-04T14:26:15.341327", "event_type": "risk", "data": {"category": "reputation", "description": "Faced many corruption cases in the past", "severity": 7}}
+{"timestamp": "2026-02-04T14:26:15.341863", "event_type": "risk", "data": {"category": "legal", "description": "Corruption cases and potential legal action", "severity": 8}}
+{"timestamp": "2026-02-04T14:26:15.342153", "event_type": "risk", "data": {"category": "association", "description": "Connections to potentially problematic individuals or organizations", "severity": 5}}
+{"timestamp": "2026-02-04T14:26:15.342418", "event_type": "risk", "data": {"category": "pattern", "description": "Inconsistencies in birthdate and potential gaps in history", "severity": 4}}
+{"timestamp": "2026-02-04T14:26:15.343255", "event_type": "phase_change", "data": {"from": "risk_analysis", "to": "connection_mapping"}}
+{"timestamp": "2026-02-04T14:26:17.889074", "event_type": "phase_change", "data": {"from": "connection_mapping", "to": "source_validation"}}
+{"timestamp": "2026-02-04T14:27:38.034589", "event_type": "phase_change", "data": {"from": "source_validation", "to": "report_generation"}}

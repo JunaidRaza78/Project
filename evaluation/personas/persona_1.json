@@ -1,0 +1,69 @@
+{
+  "name": "Elizabeth Holmes",
+  "description": "Founder and former CEO of Theranos, convicted of fraud",
+  "context": "Theranos founder, blood testing startup",
+  "expected_findings": {
+    "biography": [
+      {"fact": "Born February 3, 1984", "required": true},
+      {"fact": "Born in Washington D.C.", "required": true},
+      {"fact": "Attended Stanford University", "required": true},
+      {"fact": "Dropped out of Stanford in 2003", "required": true}
+    ],
+    "professional": [
+      {"fact": "Founded Theranos in 2003", "required": true},
+      {"fact": "Served as CEO of Theranos until 2018", "required": true},
+      {"fact": "Theranos dissolved in 2018", "required": true},
+      {"fact": "Company valued at $9 billion at peak", "required": false}
+    ],
+    "financial": [
+      {"fact": "Raised over $700 million for Theranos", "required": false},
+      {"fact": "Personal net worth reached $4.5 billion at peak", "required": false}
+    ],
+    "associations": [
+      {"fact": "Sunny Balwani was COO and romantic partner", "required": true},
+      {"fact": "Henry Kissinger served on board", "required": true},
+      {"fact": "George Shultz served on board", "required": true},
+      {"fact": "James Mattis served on board", "required": false}
+    ],
+    "controversies": [
+      {"fact": "SEC charged with fraud in 2018", "required": true},
+      {"fact": "Convicted of wire fraud in 2022", "required": true},
+      {"fact": "Sentenced to 11+ years in prison", "required": true},
+      {"fact": "Theranos blood tests were inaccurate", "required": true}
+    ]
+  },
+  "expected_risks": [
+    {
+      "category": "legal",
+      "description": "Wire fraud conviction and prison sentence",
+      "min_severity": 9
+    },
+    {
+      "category": "legal",
+      "description": "SEC fraud charges and settlement",
+      "min_severity": 8
+    },
+    {
+      "category": "financial",
+      "description": "Investor fraud - misleading investors about technology",
+      "min_severity": 8
+    },
+    {
+      "category": "reputation",
+      "description": "Massive public scandal and media coverage",
+      "min_severity": 7
+    }
+  ],
+  "expected_connections": [
+    {"entity": "Theranos", "type": "organization", "relationship": "founded"},
+    {"entity": "Sunny Balwani", "type": "person", "relationship": "partner/COO"},
+    {"entity": "Walgreens", "type": "organization", "relationship": "partner"},
+    {"entity": "Safeway", "type": "organization", "relationship": "partner"},
+    {"entity": "Stanford University", "type": "organization", "relationship": "attended"}
+  ],
+  "minimum_scores": {
+    "finding_coverage": 0.8,
+    "risk_coverage": 0.75,
+    "connection_coverage": 0.6
+  }
+}
