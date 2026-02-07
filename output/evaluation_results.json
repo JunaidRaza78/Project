@@ -1,0 +1,26 @@
+[
+  {
+    "persona": "Elizabeth Holmes",
+    "finding_coverage": 0.5,
+    "risk_coverage": 0.25,
+    "connection_coverage": 0.4,
+    "overall_score": 0.405,
+    "passed": false
+  },
+  {
+    "persona": "Sam Bankman-Fried",
+    "finding_coverage": 0.3333333333333333,
+    "risk_coverage": 0.3333333333333333,
+    "connection_coverage": 0.6,
+    "overall_score": 0.38666666666666666,
+    "passed": false
+  },
+  {
+    "persona": "Adam Neumann",
+    "finding_coverage": 0.4444444444444444,
+    "risk_coverage": 0.0,
+    "connection_coverage": 0.4,
+    "overall_score": 0.3022222222222222,
+    "passed": false
+  }
+]

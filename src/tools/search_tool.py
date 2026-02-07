@@ -34,7 +34,13 @@ class SerperSearchTool:
             api_key=api_key,
             num_results=num_results,
         )
-        self.client = httpx.AsyncClient(timeout=30.0)
+        self.client: httpx.AsyncClient | None = None
+        self._ensure_client()
+    
+    def _ensure_client(self):
+        """Ensure the HTTP client is initialized and not closed."""
+        if self.client is None or self.client.is_closed:
+            self.client = httpx.AsyncClient(timeout=30.0)
     
     async def search(
         self,
@@ -54,6 +60,9 @@ class SerperSearchTool:
             List of SearchResult objects
         """
         try:
+            # Ensure client is available
+            self._ensure_client()
+            
             headers = {
                 "X-API-KEY": self.config.api_key,
                 "Content-Type": "application/json",

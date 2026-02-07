@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/junaidraza/Documents/Projects/research/**)"
+    ]
+  }
+}

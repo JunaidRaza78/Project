@@ -46,11 +46,18 @@ class WebScraperTool:
     }
     
     def __init__(self, timeout: float = 15.0):
-        self.client = httpx.AsyncClient(
-            timeout=timeout,
-            headers={"User-Agent": self.USER_AGENT},
-            follow_redirects=True,
-        )
+        self.timeout = timeout
+        self.client: httpx.AsyncClient | None = None
+        self._ensure_client()
+    
+    def _ensure_client(self):
+        """Ensure the HTTP client is initialized and not closed."""
+        if self.client is None or self.client.is_closed:
+            self.client = httpx.AsyncClient(
+                timeout=self.timeout,
+                headers={"User-Agent": self.USER_AGENT},
+                follow_redirects=True,
+            )
     
     def _is_blocked_domain(self, url: str) -> bool:
         """Check if domain commonly blocks scraping."""
@@ -81,6 +88,9 @@ class WebScraperTool:
             )
         
         try:
+            # Ensure client is available
+            self._ensure_client()
+            
             response = await self.client.get(url)
             response.raise_for_status()
             
