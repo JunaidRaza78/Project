@@ -83,12 +83,16 @@ async def main():
         print("  - SERPER_API_KEY")
         print("\nCopy .env.example to .env and fill in your keys.")
         sys.exit(1)
-    
+
+    # Setup LangSmith monitoring if configured
+    settings.setup_langsmith()
+
     # Print banner
     print("""
 ╔═══════════════════════════════════════════════════════════════╗
-║           AUTONOMOUS RESEARCH AGENT v0.1.0                    ║
-║     Multi-Model Investigation & Risk Assessment System        ║
+║           AUTONOMOUS RESEARCH AGENT v0.2.0                    ║
+║   Multi-Model Investigation & Risk Assessment System          ║
+║   Gemini 2.5 + Groq | Neo4j Identity Graph | LangSmith       ║
 ╚═══════════════════════════════════════════════════════════════╝
     """)
     
@@ -105,6 +109,9 @@ async def main():
         google_api_key=settings.google_api_key,
         serper_api_key=settings.serper_api_key,
         output_dir=args.output,
+        neo4j_uri=settings.neo4j_uri,
+        neo4j_user=settings.neo4j_user,
+        neo4j_password=settings.neo4j_password or "",
     )
     
     try:

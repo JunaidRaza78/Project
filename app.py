@@ -52,8 +52,8 @@ st.markdown("""
         border-radius: 1rem;
         color: white;
     }
-    .risk-high { 
-        background-color: #fee2e2; 
+    .risk-high {
+        background-color: #fee2e2;
         border-left: 4px solid #ef4444;
         padding: 1rem;
         border-radius: 0.5rem;
@@ -61,8 +61,8 @@ st.markdown("""
         color: #1f2937 !important;
     }
     .risk-high strong, .risk-high small { color: #1f2937 !important; }
-    .risk-medium { 
-        background-color: #fef3c7; 
+    .risk-medium {
+        background-color: #fef3c7;
         border-left: 4px solid #f59e0b;
         padding: 1rem;
         border-radius: 0.5rem;
@@ -70,8 +70,8 @@ st.markdown("""
         color: #1f2937 !important;
     }
     .risk-medium strong, .risk-medium small { color: #1f2937 !important; }
-    .risk-low { 
-        background-color: #d1fae5; 
+    .risk-low {
+        background-color: #d1fae5;
         border-left: 4px solid #10b981;
         padding: 1rem;
         border-radius: 0.5rem;
@@ -96,6 +96,15 @@ st.markdown("""
         color: #1f2937 !important;
     }
     .connection-card strong { color: #1e40af !important; }
+    .graph-stat {
+        background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 0.5rem 0;
+        border-left: 4px solid #ec4899;
+        color: #1f2937 !important;
+    }
+    .graph-stat strong { color: #9d174d !important; }
     .stProgress > div > div > div > div {
         background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
     }
@@ -129,14 +138,20 @@ def check_api_keys() -> bool:
 async def run_investigation(target: str, context: str, max_iterations: int) -> AgentState:
     """Run the research agent investigation."""
     settings = Settings()
-    
+
+    # Setup LangSmith monitoring if configured
+    settings.setup_langsmith()
+
     orchestrator = ResearchOrchestrator(
         groq_api_key=settings.groq_api_key,
         google_api_key=settings.google_api_key,
         serper_api_key=settings.serper_api_key,
         output_dir=Path("output"),
+        neo4j_uri=settings.neo4j_uri,
+        neo4j_user=settings.neo4j_user,
+        neo4j_password=settings.neo4j_password or "",
     )
-    
+
     return await orchestrator.investigate(
         target_name=target,
         context=context,
@@ -148,7 +163,7 @@ def render_sidebar():
     """Render the sidebar with configuration options."""
     with st.sidebar:
         st.markdown("## ⚙️ Configuration")
-        
+
         # API Key Status
         api_configured = check_api_keys()
         if api_configured:
@@ -163,25 +178,25 @@ def render_sidebar():
             SERPER_API_KEY=your_key
             ```
             """)
-        
+
         st.divider()
-        
+
         # Investigation settings
         st.markdown("### 🎯 Investigation Settings")
-        
+
         target_name = st.text_input(
             "Target Name",
             placeholder="e.g., Elizabeth Holmes",
             help="Name of the person or entity to investigate"
         )
-        
+
         target_context = st.text_area(
             "Additional Context",
             placeholder="e.g., Theranos founder, blood testing startup",
             help="Optional context to guide the investigation",
             height=80,
         )
-        
+
         max_iterations = st.slider(
             "Max Search Iterations",
             min_value=3,
@@ -189,23 +204,24 @@ def render_sidebar():
             value=8,
             help="More iterations = deeper investigation but takes longer"
         )
-        
+
         st.divider()
-        
+
         # Quick select personas
         st.markdown("### 🧪 Test Personas")
-        col1, col2, col3 = st.columns(3)
-        
+        col1, col2 = st.columns(2)
+
         with col1:
             if st.button("Holmes", use_container_width=True):
                 return "Elizabeth Holmes", "Theranos founder", max_iterations
-        with col2:
             if st.button("SBF", use_container_width=True):
                 return "Sam Bankman-Fried", "FTX founder", max_iterations
-        with col3:
+        with col2:
             if st.button("Neumann", use_container_width=True):
                 return "Adam Neumann", "WeWork founder", max_iterations
-        
+            if st.button("Overturf", use_container_width=True):
+                return "Timothy Overturf", "CEO of Sisu Capital LLC", max_iterations
+
         return target_name, target_context, max_iterations
 
 
@@ -214,7 +230,7 @@ def render_risk_chart(state: AgentState):
     if not state.risk_indicators:
         st.info("No risks identified")
         return
-    
+
     # Categorize risks by severity
     severity_counts = {"High (7-10)": 0, "Medium (4-6)": 0, "Low (1-3)": 0}
     for risk in state.risk_indicators:
@@ -224,21 +240,21 @@ def render_risk_chart(state: AgentState):
             severity_counts["Medium (4-6)"] += 1
         else:
             severity_counts["Low (1-3)"] += 1
-    
+
     fig = go.Figure(data=[go.Pie(
         labels=list(severity_counts.keys()),
         values=list(severity_counts.values()),
         hole=0.4,
         marker_colors=["#ef4444", "#f59e0b", "#10b981"],
     )])
-    
+
     fig.update_layout(
         title="Risk Distribution",
         showlegend=True,
         height=300,
         margin=dict(l=20, r=20, t=40, b=20),
     )
-    
+
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -247,18 +263,18 @@ def render_findings_chart(state: AgentState):
     if not state.findings:
         st.info("No findings yet")
         return
-    
+
     category_counts = {}
     for finding in state.findings:
         cat = finding.category.title()
         category_counts[cat] = category_counts.get(cat, 0) + 1
-    
+
     fig = go.Figure(data=[go.Bar(
         x=list(category_counts.keys()),
         y=list(category_counts.values()),
         marker_color="#667eea",
     )])
-    
+
     fig.update_layout(
         title="Findings by Category",
         xaxis_title="Category",
@@ -266,7 +282,7 @@ def render_findings_chart(state: AgentState):
         height=300,
         margin=dict(l=20, r=20, t=40, b=20),
     )
-    
+
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -275,11 +291,11 @@ def render_connections_network(state: AgentState):
     if not state.connections:
         st.info("No connections mapped")
         return
-    
+
     # Build network data
     nodes = [{"id": state.target_name, "group": "target"}]
     edges = []
-    
+
     for conn in state.connections[:15]:  # Limit to 15 for visualization
         nodes.append({
             "id": conn.entity_name,
@@ -290,10 +306,10 @@ def render_connections_network(state: AgentState):
             "target": conn.entity_name,
             "relationship": conn.relationship,
         })
-    
+
     # Create network chart using scatter
     import math
-    
+
     # Position nodes in a circle
     n = len(nodes)
     positions = {}
@@ -303,10 +319,10 @@ def render_connections_network(state: AgentState):
         else:
             angle = 2 * math.pi * (i - 1) / (n - 1)
             positions[node["id"]] = (math.cos(angle) * 2, math.sin(angle) * 2)
-    
+
     # Create figure
     fig = go.Figure()
-    
+
     # Add edges
     for edge in edges:
         x0, y0 = positions[edge["source"]]
@@ -318,7 +334,7 @@ def render_connections_network(state: AgentState):
             hoverinfo="none",
             showlegend=False,
         ))
-    
+
     # Add nodes
     colors = {"target": "#667eea", "person": "#10b981", "organization": "#f59e0b", "event": "#ef4444"}
     for node in nodes:
@@ -333,7 +349,7 @@ def render_connections_network(state: AgentState):
             hovertext=node["id"],
             showlegend=False,
         ))
-    
+
     fig.update_layout(
         title="Connection Network",
         showlegend=False,
@@ -342,17 +358,93 @@ def render_connections_network(state: AgentState):
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         margin=dict(l=20, r=20, t=40, b=20),
     )
-    
+
     st.plotly_chart(fig, use_container_width=True)
+
+
+def render_identity_graph_tab(state: AgentState):
+    """Render the Identity Graph tab with connection data."""
+    st.markdown("#### Node Summary")
+
+    # Count entity types
+    type_counts = {"person": 0, "organization": 0, "event": 0}
+    for conn in state.connections:
+        t = conn.entity_type.lower()
+        if t in type_counts:
+            type_counts[t] += 1
+        else:
+            type_counts[t] = type_counts.get(t, 0) + 1
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("Target", 1)
+    with col2:
+        st.metric("People", type_counts.get("person", 0))
+    with col3:
+        st.metric("Organizations", type_counts.get("organization", 0))
+    with col4:
+        st.metric("Events", type_counts.get("event", 0))
+
+    st.markdown("---")
+
+    # Connection details table
+    if state.connections:
+        st.markdown("#### Relationship Edges")
+        for conn in state.connections:
+            icon = "👤" if conn.entity_type == "person" else "🏢" if conn.entity_type == "organization" else "📅"
+            timeframe = f" ({conn.timeframe})" if conn.timeframe else ""
+            st.markdown(f"""
+            <div class="graph-stat">
+                {icon} <strong>{state.target_name}</strong> → <strong>{conn.entity_name}</strong><br>
+                {conn.relationship}{timeframe} · Confidence: {conn.confidence:.0%}
+            </div>
+            """, unsafe_allow_html=True)
+    else:
+        st.info("No identity graph data available.")
+
+    # Findings & risk node counts
+    st.markdown("---")
+    st.markdown("#### Graph Statistics")
+    total_nodes = 1 + len(state.connections) + len(state.findings) + len(state.risk_indicators)
+    total_edges = len(state.connections) + len(state.findings) + len(state.risk_indicators)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Total Nodes", total_nodes)
+    with col2:
+        st.metric("Total Edges", total_edges)
+
+    # Export as JSON
+    if state.connections:
+        graph_data = {
+            "nodes": [
+                {"name": state.target_name, "type": "target"},
+                *[{"name": c.entity_name, "type": c.entity_type} for c in state.connections],
+            ],
+            "edges": [
+                {
+                    "source": state.target_name,
+                    "target": c.entity_name,
+                    "relationship": c.relationship,
+                    "confidence": c.confidence,
+                }
+                for c in state.connections
+            ],
+        }
+        st.download_button(
+            "📥 Export Graph JSON",
+            json.dumps(graph_data, indent=2),
+            file_name=f"{state.target_name.lower().replace(' ', '_')}_graph.json",
+            mime="application/json",
+        )
 
 
 def render_results(state: AgentState):
     """Render the investigation results."""
     # Summary metrics
     st.markdown("### 📊 Investigation Summary")
-    
+
     col1, col2, col3, col4 = st.columns(4)
-    
+
     with col1:
         st.metric("Findings", len(state.findings))
     with col2:
@@ -362,27 +454,29 @@ def render_results(state: AgentState):
         st.metric("Connections", len(state.connections))
     with col4:
         st.metric("Iterations", state.iteration_count)
-    
+
     st.divider()
-    
+
     # Charts
     chart_col1, chart_col2 = st.columns(2)
-    
+
     with chart_col1:
         render_risk_chart(state)
-    
+
     with chart_col2:
         render_findings_chart(state)
-    
+
     # Connections network
     st.markdown("### 🔗 Connection Network")
     render_connections_network(state)
-    
+
     st.divider()
-    
+
     # Detailed findings in tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["📋 Findings", "⚠️ Risks", "🔗 Connections", "📄 Full Report"])
-    
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "📋 Findings", "⚠️ Risks", "🔗 Connections", "🕸️ Identity Graph", "📄 Full Report"
+    ])
+
     with tab1:
         if state.findings:
             for finding in sorted(state.findings, key=lambda f: f.confidence, reverse=True):
@@ -396,7 +490,7 @@ def render_results(state: AgentState):
                 """, unsafe_allow_html=True)
         else:
             st.info("No findings extracted")
-    
+
     with tab2:
         if state.risk_indicators:
             for risk in sorted(state.risk_indicators, key=lambda r: r.severity, reverse=True):
@@ -410,7 +504,7 @@ def render_results(state: AgentState):
                 """, unsafe_allow_html=True)
         else:
             st.success("No significant risks identified")
-    
+
     with tab3:
         if state.connections:
             for conn in state.connections:
@@ -424,8 +518,11 @@ def render_results(state: AgentState):
                 """, unsafe_allow_html=True)
         else:
             st.info("No connections mapped")
-    
+
     with tab4:
+        render_identity_graph_tab(state)
+
+    with tab5:
         if state.final_report:
             st.markdown(state.final_report)
             st.download_button(
@@ -441,26 +538,26 @@ def render_results(state: AgentState):
 def main():
     """Main application entry point."""
     init_session_state()
-    
+
     # Header
     st.markdown('<h1 class="main-header">🔍 Autonomous Research Agent</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-header">AI-powered investigation for due diligence and risk assessment</p>', unsafe_allow_html=True)
-    
+    st.markdown('<p class="sub-header">AI-powered investigation for due diligence and risk assessment · Gemini 2.5 + Groq | Neo4j | LangSmith</p>', unsafe_allow_html=True)
+
     # Sidebar
     target, context, iterations = render_sidebar()
-    
+
     # Main content
     if st.session_state.investigation_results:
         # Show results
         render_results(st.session_state.investigation_results)
-        
+
         if st.button("🔄 New Investigation", type="secondary"):
             st.session_state.investigation_results = None
             st.rerun()
     else:
         # Show investigation form
         st.markdown("### 🚀 Start Investigation")
-        
+
         if not check_api_keys():
             st.warning("⚠️ Please configure API keys in `.env` file before running investigations.")
             st.markdown("""
@@ -469,13 +566,13 @@ def main():
             2. **Google Gemini** - Get from [ai.google.dev](https://ai.google.dev)
             3. **Serper** - Get from [serper.dev](https://serper.dev)
             """)
-        
+
         col1, col2 = st.columns([3, 1])
-        
+
         with col1:
             if target:
                 st.info(f"**Target:** {target}" + (f" | **Context:** {context}" if context else ""))
-        
+
         with col2:
             run_button = st.button(
                 "🔍 Run Investigation",
@@ -483,53 +580,53 @@ def main():
                 disabled=not target or not check_api_keys() or st.session_state.is_running,
                 use_container_width=True,
             )
-        
+
         if run_button and target:
             st.session_state.is_running = True
-            
+
             with st.status("Running investigation...", expanded=True) as status:
                 st.write("🔍 Initializing search...")
-                
+
                 try:
                     # Run the async investigation
                     results = asyncio.run(run_investigation(target, context, iterations))
-                    
+
                     st.session_state.investigation_results = results
                     st.session_state.is_running = False
-                    
+
                     status.update(label="✅ Investigation complete!", state="complete")
                     st.rerun()
-                    
+
                 except Exception as e:
                     st.session_state.is_running = False
                     status.update(label="❌ Investigation failed", state="error")
                     st.error(f"Error: {str(e)}")
-        
+
         # Show sample output
         if not target:
             st.markdown("---")
             st.markdown("### 📖 How It Works")
-            
+
             col1, col2, col3 = st.columns(3)
-            
+
             with col1:
                 st.markdown("""
                 **1. Search & Extract**
-                
+
                 The agent performs iterative web searches using Serper API, extracting facts from search results.
                 """)
-            
+
             with col2:
                 st.markdown("""
                 **2. Analyze & Connect**
-                
+
                 Multiple AI models analyze findings for risks and map connections between entities.
                 """)
-            
+
             with col3:
                 st.markdown("""
                 **3. Validate & Report**
-                
+
                 Sources are cross-referenced for confidence scoring, and a comprehensive report is generated.
                 """)
 

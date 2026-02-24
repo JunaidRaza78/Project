@@ -20,7 +20,7 @@ class GeminiModel(BaseModel):
     def __init__(
         self,
         api_key: str,
-        model_name: str = "gemini-pro",
+        model_name: str = "gemini-2.0-flash",
     ):
         super().__init__(api_key, model_name, ModelType.GEMINI)
         self.client = ChatGoogleGenerativeAI(

@@ -1,0 +1,80 @@
+{
+  "name": "Timothy Overturf",
+  "description": "CEO and sole owner of Sisu Capital LLC, SEC-charged investment advisor",
+  "context": "CEO of Sisu Capital LLC, investment advisor based in California",
+  "expected_findings": {
+    "biography": [
+      {"fact": "Full name Timothy Silas Prugh Overturf", "required": false},
+      {"fact": "Based in Arcata and Mill Valley, California", "required": true},
+      {"fact": "Father is Hansueli Hans Overturf", "required": true},
+      {"fact": "Founded Sisu Capital at approximately age 18", "required": false}
+    ],
+    "professional": [
+      {"fact": "CEO and sole owner of Sisu Capital LLC", "required": true},
+      {"fact": "Sisu Capital founded approximately 2013-2014", "required": false},
+      {"fact": "Co-owner of Arcata Theatre Lounge purchased August 2019 via Joseppi's LLC", "required": false},
+      {"fact": "CRD number 6422933", "required": false},
+      {"fact": "Registered investment advisor in California", "required": true}
+    ],
+    "financial": [
+      {"fact": "Sisu Capital managed approximately $51.7 million AUM", "required": true},
+      {"fact": "Served approximately 42 high-net-worth clients", "required": false},
+      {"fact": "Approximately $858K in owner draws", "required": false},
+      {"fact": "Arcata Theatre Lounge purchased for $1.135 million", "required": false}
+    ],
+    "associations": [
+      {"fact": "Hansueli Hans Overturf is father and co-defendant", "required": true},
+      {"fact": "Joseph Ostini is business partner at Arcata Theatre Lounge", "required": false},
+      {"fact": "Sisu Capital LLC is his investment advisory firm", "required": true},
+      {"fact": "Joseppi's LLC is the entity for theatre ownership", "required": false}
+    ],
+    "controversies": [
+      {"fact": "SEC charged in August 2023 for fiduciary duty breaches", "required": true},
+      {"fact": "Violated Sections 206(1) and 206(2) of Investment Advisers Act", "required": false},
+      {"fact": "Allowed suspended father Hans Overturf to advise clients 2017-2021", "required": true},
+      {"fact": "Thinly-traded bank stock purchase scheme contrary to client instructions", "required": true},
+      {"fact": "California investment advisor registration revoked January 2021", "required": false},
+      {"fact": "NLRB ruled against Arcata Theatre Lounge for wrongful termination of Rebecca Maynard", "required": false}
+    ]
+  },
+  "expected_risks": [
+    {
+      "category": "legal",
+      "description": "SEC enforcement action for fiduciary breaches under Investment Advisers Act",
+      "min_severity": 9
+    },
+    {
+      "category": "legal",
+      "description": "NLRB violation for wrongful termination at Arcata Theatre Lounge",
+      "min_severity": 5
+    },
+    {
+      "category": "financial",
+      "description": "Unauthorized trades in thinly-traded bank stock contrary to client instructions",
+      "min_severity": 8
+    },
+    {
+      "category": "association",
+      "description": "Allowed suspended advisor father Hans Overturf to serve clients",
+      "min_severity": 8
+    },
+    {
+      "category": "pattern",
+      "description": "Founded investment firm at age 18, multiple regulatory issues by age 28",
+      "min_severity": 6
+    }
+  ],
+  "expected_connections": [
+    {"entity": "Sisu Capital LLC", "type": "organization", "relationship": "founded/owner"},
+    {"entity": "Hansueli Hans Overturf", "type": "person", "relationship": "father/co-defendant"},
+    {"entity": "Joseph Ostini", "type": "person", "relationship": "business partner"},
+    {"entity": "Arcata Theatre Lounge", "type": "organization", "relationship": "co-owner"},
+    {"entity": "Joseppi's LLC", "type": "organization", "relationship": "owner"},
+    {"entity": "SEC", "type": "organization", "relationship": "enforcement action"}
+  ],
+  "minimum_scores": {
+    "finding_coverage": 0.5,
+    "risk_coverage": 0.4,
+    "connection_coverage": 0.5
+  }
+}

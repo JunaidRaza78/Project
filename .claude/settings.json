@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Read(//Users/junaidraza/Documents/Projects/research/**)"
+      "Read(//Users/junaidraza/Documents/Projects/research/**)",
+      "Bash(find:*)"
     ]
   }
 }

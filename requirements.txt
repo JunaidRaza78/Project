@@ -28,6 +28,12 @@ lxml>=5.0.0
 pytest>=8.0.0
 pytest-asyncio>=0.23.0
 
+# Graph database
+neo4j>=5.14.0
+
+# LangSmith monitoring
+langsmith>=0.1.0
+
 # Frontend
 streamlit>=1.40.0
 plotly>=5.18.0

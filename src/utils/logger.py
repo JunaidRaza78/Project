@@ -19,11 +19,11 @@ from rich.table import Table
 def get_logger(name: str, debug: bool = False) -> logging.Logger:
     """Create a configured logger with Rich handler."""
     logger = logging.getLogger(name)
-    
+
     if not logger.handlers:
         level = logging.DEBUG if debug else logging.INFO
         logger.setLevel(level)
-        
+
         handler = RichHandler(
             console=Console(stderr=True),
             show_time=True,
@@ -31,27 +31,29 @@ def get_logger(name: str, debug: bool = False) -> logging.Logger:
             rich_tracebacks=True,
         )
         handler.setLevel(level)
-        
+
         formatter = logging.Formatter("%(message)s")
         handler.setFormatter(formatter)
-        
+
         logger.addHandler(handler)
-    
+
     return logger
 
 
 class AuditLogger:
     """
     Audit logging for research agent operations.
-    
+
     Tracks:
     - Search queries and results
     - Model invocations and responses
     - Extracted findings
     - Risk assessments
     - Decision points
+    - Retry attempts and fallbacks
+    - Identity graph builds
     """
-    
+
     def __init__(
         self,
         log_dir: Path,
@@ -60,24 +62,24 @@ class AuditLogger:
     ):
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(parents=True, exist_ok=True)
-        
+
         self.target_name = target_name
         self.console = Console() if console_output else None
-        
+
         # Create log file
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         safe_name = target_name.lower().replace(" ", "_")[:30]
         self.log_file = self.log_dir / f"{safe_name}_{timestamp}.jsonl"
-        
+
         # Initialize entries list
         self.entries: list[dict[str, Any]] = []
-        
+
         # Session start
         self._log_entry("session_start", {
             "target": target_name,
             "timestamp": datetime.now().isoformat(),
         })
-    
+
     def _log_entry(self, event_type: str, data: dict[str, Any]) -> None:
         """Write a log entry."""
         entry = {
@@ -85,13 +87,13 @@ class AuditLogger:
             "event_type": event_type,
             "data": data,
         }
-        
+
         self.entries.append(entry)
-        
+
         # Write to file
         with open(self.log_file, "a") as f:
             f.write(json.dumps(entry) + "\n")
-    
+
     def log_search(
         self,
         query: str,
@@ -104,13 +106,13 @@ class AuditLogger:
             "num_results": num_results,
             "iteration": iteration,
         })
-        
+
         if self.console:
             self.console.print(
                 f"[blue]🔍 Search [{iteration}]:[/blue] {query} "
                 f"[dim]({num_results} results)[/dim]"
             )
-    
+
     def log_model_call(
         self,
         model_type: str,
@@ -125,13 +127,13 @@ class AuditLogger:
             "latency_ms": latency_ms,
             "tokens": tokens,
         })
-        
+
         if self.console:
             self.console.print(
                 f"[cyan]🤖 {model_type}:[/cyan] {task} "
                 f"[dim]({latency_ms:.0f}ms)[/dim]"
             )
-    
+
     def log_finding(
         self,
         category: str,
@@ -144,14 +146,14 @@ class AuditLogger:
             "fact": fact,
             "confidence": confidence,
         })
-        
+
         if self.console:
             conf_color = "green" if confidence >= 0.7 else "yellow" if confidence >= 0.4 else "red"
             self.console.print(
                 f"[green]📋 Finding [{category}]:[/green] {fact[:80]}... "
                 f"[{conf_color}]({confidence:.0%})[/{conf_color}]"
             )
-    
+
     def log_risk(
         self,
         category: str,
@@ -164,21 +166,21 @@ class AuditLogger:
             "description": description,
             "severity": severity,
         })
-        
+
         if self.console:
             sev_color = "red" if severity >= 7 else "yellow" if severity >= 4 else "white"
             self.console.print(
                 f"[{sev_color}]⚠️  Risk [{category}]:[/{sev_color}] "
                 f"{description[:60]}... [bold](Severity: {severity}/10)[/bold]"
             )
-    
+
     def log_phase_change(self, old_phase: str, new_phase: str) -> None:
         """Log a workflow phase transition."""
         self._log_entry("phase_change", {
             "from": old_phase,
             "to": new_phase,
         })
-        
+
         if self.console:
             self.console.print(
                 Panel(
@@ -186,17 +188,17 @@ class AuditLogger:
                     style="magenta",
                 )
             )
-    
+
     def log_error(self, error: str, context: str = "") -> None:
         """Log an error."""
         self._log_entry("error", {
             "error": error,
             "context": context,
         })
-        
+
         if self.console:
             self.console.print(f"[red]❌ Error:[/red] {error}")
-    
+
     def log_query_refinement(
         self,
         original_query: str,
@@ -209,45 +211,94 @@ class AuditLogger:
             "refined": refined_queries,
             "reason": reason,
         })
-        
+
         if self.console:
             self.console.print(
                 f"[yellow]🔄 Query Refinement:[/yellow] {reason}"
             )
             for q in refined_queries[:3]:
                 self.console.print(f"   → {q}")
-    
+
+    def log_retry(
+        self,
+        operation: str,
+        attempt: int,
+        max_attempts: int,
+        error: str,
+        wait_seconds: float = 0,
+    ) -> None:
+        """Log a retry attempt for rate-limited or failed operations."""
+        self._log_entry("retry", {
+            "operation": operation,
+            "attempt": attempt,
+            "max_attempts": max_attempts,
+            "error": error,
+            "wait_seconds": wait_seconds,
+        })
+
+        if self.console:
+            self.console.print(
+                f"[yellow]🔁 Retry [{attempt}/{max_attempts}]:[/yellow] {operation} "
+                f"[dim]({error})[/dim]"
+                + (f" [dim]waiting {wait_seconds:.1f}s[/dim]" if wait_seconds else "")
+            )
+
+    def log_graph_build(
+        self,
+        nodes_created: int,
+        edges_created: int,
+        target_name: str,
+    ) -> None:
+        """Log identity graph construction."""
+        self._log_entry("graph_build", {
+            "nodes_created": nodes_created,
+            "edges_created": edges_created,
+            "target": target_name,
+        })
+
+        if self.console:
+            self.console.print(
+                f"[magenta]🕸️  Graph Built:[/magenta] {nodes_created} nodes, "
+                f"{edges_created} edges for [bold]{target_name}[/bold]"
+            )
+
     def get_summary(self) -> dict[str, Any]:
         """Get execution summary statistics."""
         searches = [e for e in self.entries if e["event_type"] == "search"]
         findings = [e for e in self.entries if e["event_type"] == "finding"]
         risks = [e for e in self.entries if e["event_type"] == "risk"]
         errors = [e for e in self.entries if e["event_type"] == "error"]
-        
+        retries = [e for e in self.entries if e["event_type"] == "retry"]
+        graph_builds = [e for e in self.entries if e["event_type"] == "graph_build"]
+
         return {
             "target": self.target_name,
             "total_searches": len(searches),
             "total_findings": len(findings),
             "total_risks": len(risks),
             "errors": len(errors),
+            "retries": len(retries),
+            "graph_builds": len(graph_builds),
             "log_file": str(self.log_file),
         }
-    
+
     def print_summary(self) -> None:
         """Print a summary table to console."""
         if not self.console:
             return
-        
+
         summary = self.get_summary()
-        
+
         table = Table(title=f"Investigation Summary: {self.target_name}")
         table.add_column("Metric", style="cyan")
         table.add_column("Value", style="green")
-        
+
         table.add_row("Total Searches", str(summary["total_searches"]))
         table.add_row("Findings Extracted", str(summary["total_findings"]))
         table.add_row("Risks Identified", str(summary["total_risks"]))
+        table.add_row("Retries", str(summary["retries"]))
+        table.add_row("Graph Builds", str(summary["graph_builds"]))
         table.add_row("Errors", str(summary["errors"]))
         table.add_row("Log File", summary["log_file"])
-        
+
         self.console.print(table)
